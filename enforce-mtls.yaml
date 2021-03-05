@@ -1,0 +1,22 @@
+apiVersion: "networking.istio.io/v1alpha3"
+kind: "DestinationRule"
+metadata:
+  name: "invoicing"
+spec:
+  host: "invoicing.default.svc.cluster.local"
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+---
+apiVersion: "security.istio.io/v1beta1"
+kind: "PeerAuthentication"
+metadata:
+  name: "invoicing-policy"
+  namespace: "default"
+spec:
+  selector:
+    matchLabels:
+      app: invoicing
+  mtls:
+    mode: STRICT
+

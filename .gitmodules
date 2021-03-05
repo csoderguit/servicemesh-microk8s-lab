@@ -1,0 +1,3 @@
+[submodule "microservice-istio"]
+	path = microservice-istio
+	url = https://github.com/ewolff/microservice-istio

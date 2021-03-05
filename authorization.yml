@@ -1,0 +1,17 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: invoicing-policy
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: invoicing
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["default"]
+    to:
+    - operation:
+        methods: ["GET"]
